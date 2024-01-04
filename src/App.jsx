@@ -7,7 +7,6 @@ function App() {
   const [todosArr, setTodosArr] = useState([]);
 
   const [filterValue, setFilterValue] = useState("all");
-  // console.log(filterValue);
 
   let filterdTodosArr;
 
@@ -32,11 +31,18 @@ function App() {
       )
     );
   };
+  const handleEditTask = (taskId, editedTask) => {
+    setTodosArr((prev) =>
+      prev.map((todo) =>
+        todo.id === taskId ? { ...todo, task: editedTask } : todo
+      )
+    );
+  };
 
   return (
     <>
-      <div>
-        <h1 className="mb-5 display-3 text-center">Todo List</h1>
+      <div className="mt-5">
+        <h1 className="mb-2 display-3 text-center">Todo List</h1>
       </div>
       <Filter
         filterValue={filterValue}
@@ -49,6 +55,7 @@ function App() {
       />
       <FormAddTask handleAddTask={handleAddTask} />
       <TodosList
+        handleEditTask={handleEditTask}
         handleCompleteTask={handleCompleteTask}
         handleDeleteTask={handleDeleteTask}
         todosArr={filterdTodosArr}

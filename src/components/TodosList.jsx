@@ -1,6 +1,11 @@
 import TodoItem from "./TodoItem";
 
-const TodosList = ({ todosArr, handleDeleteTask, handleCompleteTask }) => {
+const TodosList = ({
+  todosArr,
+  handleDeleteTask,
+  handleCompleteTask,
+  handleEditTask,
+}) => {
   //   const data = [
   //     { id: 1, name: "task1", completed: false },
   //     { id: 2, name: "task2", completed: false },
@@ -14,6 +19,7 @@ const TodosList = ({ todosArr, handleDeleteTask, handleCompleteTask }) => {
           {todosArr.map((task) => (
             <div key={task?.id} className="col-sm-12 col-md-9">
               <TodoItem
+                handleEditTask={handleEditTask}
                 handleCompleteTask={handleCompleteTask}
                 handleDeleteTask={handleDeleteTask}
                 task={task}

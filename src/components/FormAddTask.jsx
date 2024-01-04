@@ -9,7 +9,7 @@ const FormAddTask = ({ handleAddTask }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!taskInputVal) {
-      setInputError("Please Enter A valid task");
+      setInputError("You can't add an empty task , try adding something");
       return;
     }
 
