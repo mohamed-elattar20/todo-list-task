@@ -21,7 +21,7 @@ const FormAddTask = ({ handleAddTask }) => {
 
     handleAddTask(newTask);
 
-    console.log(taskInputVal);
+    // console.log(taskInputVal);
     inputRef.current.focus();
     setTaskInputVal("");
     setInputError("");
@@ -29,9 +29,8 @@ const FormAddTask = ({ handleAddTask }) => {
   return (
     <>
       <div className="container my-5  ">
-        <h1 className="mb-5 display-3 text-center">Todo List</h1>
         <div className="row justify-content-center ">
-          <div className="col-sm-12 col-md-9 col-lg-9">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <form
               onSubmit={handleSubmit}
               className="d-flex justify-content-center align-items-center   "
@@ -40,11 +39,11 @@ const FormAddTask = ({ handleAddTask }) => {
                 ref={inputRef}
                 value={taskInputVal}
                 onChange={(e) => setTaskInputVal(e.target.value)}
-                className="form-control"
+                className="form-control "
                 type="text"
                 placeholder="Add Task"
               />
-              <button className="btn btn-primary mx-3">Add task</button>
+              <button className="btn btn-primary mx-3 w-25">Add task</button>
             </form>
             {inputError && (
               <p className="text-start mt-1 text-danger fw-bold ">

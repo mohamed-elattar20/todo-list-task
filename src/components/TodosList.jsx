@@ -9,18 +9,17 @@ const TodosList = ({ todosArr, handleDeleteTask, handleCompleteTask }) => {
   //   ];
   return (
     <>
-      <div className="contianer">
-        <div className="row justify-content-center ">
-          <div className="col-sm-12 col-md-9">
-            {todosArr.map((task) => (
+      <div className="contianer mb-5">
+        <div className="row justify-content-center m-0">
+          {todosArr.map((task) => (
+            <div key={task?.id} className="col-sm-12 col-md-9">
               <TodoItem
-                key={task?.id}
                 handleCompleteTask={handleCompleteTask}
                 handleDeleteTask={handleDeleteTask}
                 task={task}
               />
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </>
