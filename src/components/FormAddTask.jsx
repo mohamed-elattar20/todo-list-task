@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const FormAddTask = () => {
   const [taskInputVal, setTaskInputVal] = useState("");
   const [inputError, setInputError] = useState("");
+
+  const inputRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,27 +13,29 @@ const FormAddTask = () => {
       return;
     }
     console.log(taskInputVal);
+    inputRef.current.focus();
     setTaskInputVal("");
     setInputError("");
   };
   return (
     <>
-      <div className="container my-5 text-center ">
-        <h1 className="mb-3">Todo List</h1>
-        <div className="row justify-content-center align-items-center">
-          <div className="col-sm-12 col-md-9">
+      <div className="container my-5  ">
+        <h1 className="mb-5 display-3 text-center">Todo List</h1>
+        <div className="row justify-content-center ">
+          <div className="col-sm-12 col-md-9 col-lg-9">
             <form
               onSubmit={handleSubmit}
-              className="d-flex align-items-center justify-content-between  "
+              className="d-flex justify-content-center align-items-center   "
             >
               <input
+                ref={inputRef}
                 value={taskInputVal}
                 onChange={(e) => setTaskInputVal(e.target.value)}
-                className="form-control w-75  "
+                className="form-control"
                 type="text"
                 placeholder="Add Task"
               />
-              <button className="btn btn-primary w-25 mx-3 ">Add task</button>
+              <button className="btn btn-primary mx-3">Add task</button>
             </form>
             {inputError && (
               <p className="text-start mt-2 text-danger fw-bold ">
