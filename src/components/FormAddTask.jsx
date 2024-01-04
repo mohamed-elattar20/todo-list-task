@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-const FormAddTask = () => {
+const FormAddTask = ({ handleAddTask }) => {
   const [taskInputVal, setTaskInputVal] = useState("");
   const [inputError, setInputError] = useState("");
 
@@ -12,6 +12,15 @@ const FormAddTask = () => {
       setInputError("Please Enter A valid task");
       return;
     }
+
+    const newTask = {
+      id: crypto.randomUUID(),
+      task: taskInputVal,
+      isCompleted: false,
+    };
+
+    handleAddTask(newTask);
+
     console.log(taskInputVal);
     inputRef.current.focus();
     setTaskInputVal("");
@@ -38,7 +47,7 @@ const FormAddTask = () => {
               <button className="btn btn-primary mx-3">Add task</button>
             </form>
             {inputError && (
-              <p className="text-start mt-2 text-danger fw-bold ">
+              <p className="text-start mt-1 text-danger fw-bold ">
                 {inputError}
               </p>
             )}

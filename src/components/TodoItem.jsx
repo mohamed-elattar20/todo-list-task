@@ -1,4 +1,4 @@
-const TodoItem = () => {
+const TodoItem = ({ task, handleDeleteTask }) => {
   return (
     <>
       <div className="d-flex justify-content-between  align-items-center bg-black bg-opacity-25 p-3 my-3 rounded-3  ">
@@ -7,8 +7,13 @@ const TodoItem = () => {
           type="checkbox"
           id="flexCheckDefault"
         />
-        <p className="lead m-0 text-start ">task Name</p>
-        <button className="btn btn-danger ">Delete</button>
+        <p className="lead m-0 text-start ">{task.task}</p>
+        <button
+          onClick={() => handleDeleteTask(task.id)}
+          className="btn btn-danger "
+        >
+          Delete
+        </button>
       </div>
     </>
   );
