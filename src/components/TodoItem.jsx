@@ -1,15 +1,25 @@
-const TodoItem = ({ task, handleDeleteTask }) => {
+const TodoItem = ({ task, handleDeleteTask, handleCompleteTask }) => {
   return (
     <>
-      <div className="d-flex justify-content-between  align-items-center bg-black bg-opacity-25 p-3 my-3 rounded-3  ">
+      <div
+        className={`d-flex justify-content-between  align-items-center bg-black ${
+          task?.isCompleted ? "bg-opacity-25" : "bg-opacity-50"
+        } p-3 my-3 rounded-3 `}
+      >
         <input
+          onChange={() => handleCompleteTask(task?.id)}
           className="form-check-input"
           type="checkbox"
-          id="flexCheckDefault"
         />
-        <p className="lead m-0 text-start ">{task.task}</p>
+        <p
+          className={`lead m-0 text-start ${
+            task?.isCompleted ? "text-decoration-line-through" : ""
+          }`}
+        >
+          {task?.task}
+        </p>
         <button
-          onClick={() => handleDeleteTask(task.id)}
+          onClick={() => handleDeleteTask(task?.id)}
           className="btn btn-danger "
         >
           Delete
